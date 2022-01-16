@@ -1,37 +1,86 @@
-// const name = 'Adelya'
-// const age = 19
-// const output = 'My name is ' + name + ' and my age ' + age + ' years.' // устаревшее
-
-// function getAge() {
-//     return age
+// Function
+// 1. Function Declaration. Можно обратиться к функции и до, и после ее создания
+// function greet(name) {
+//     console.log('Hello, ' + name)
 // }
 
-// const output = `My name is ${name} and my age ${getAge()} years` //  можно использовать любое выражение: функцию, переменную, тернарные выражения и тд. Использовать if else нельзя
+// 2. Function Expression (функция в переменноЙ) Нельзя обратиться к функции до ее создания
+// const greet2 = function greet2(name) {
+//     console.log('Hello, 2 ' + name)
+// }
 
-// const output = `My name is ${name} and my age ${age < 20 ? 'A' : 'B'} years` // тк 19 меньше 20, то будет значение А (тру)
-// console.log(output)
+// greet2('Adelya')
+// greet('Adelya')
 
-// const output = `
-// <div>This is div<div>
-// <p>This is p<p>
-// `
-// console.log(output)
+// console.log(typeof greet) // function
+// console.dir(greet) // тип данных функций - объект
 
-const name = 'Adelya' // преобразование в объект newString
-console.log(name.length)
-console.log(name.toUpperCase()) // верхний регистр
-console.log(name.toLowerCase()) // нижний регистр
-console.log(name.charAt(2)) // на определенной позиции значение (e)
-console.log(name.indexOf('lya')) // присутствует ли в строчке определенная комбинация строк (подстрока). Показывает с какого индекса начинается подстрока (3). Если введено несуществующее значение, то -1
-console.log(name.startsWith('Ade')) // с чего начинается строка
-console.log(name.toLowerCase().startsWith('ade')) // сначала приводим к нижнему регитстру, потом с чего начинается строка (true)
-console.log(name.endsWith('lya')) // как заканчивается строка
-console.log(name.repeat(3))
+// 3. Анонимные функции (функции без названия)
+// let counter = 0
 
-const string = '    probel     ' // пробел такой же символ строки, как и другие, но иногда может считать за баг
-console.log(string.trim()) // очищаем все пробелы
-console.log(string.trimLeft()) // также с right, очищение пробелов с одной стороны
+// const interval = setInterval(function() { // setInterval
+//     if (counter === 5) {
+//         clearInterval(interval)
+//     } else {
+//         console.log(++counter)}
+// }, 1000)
 
-function logPerson(s, name, age) {
-    return 'Info about person'
+
+// 4. Стрелочная функция
+
+// function greet(name) {
+//     console.log('Hello, ' + name)
+//  }
+
+// const arrow = (name) => {
+//     console.log('Hello, ' + name)
+// } 
+// arrow('Adelya')
+
+// const arrow2 = name => console.log('Hello, ' + name) // сокращение. если параметр один, то можно не заключать в скобки, если больше - то необходимо
+// arrow2('Adelya')
+
+// const pow2 = num => num ** 2 // возведение в степень
+// console.log (pow2(23))
+
+
+// 5. Параметры по умолчанию
+
+// const sum = (a, b) => a + b
+// console.log(sum(23, 3))
+
+// const sum = (a, b) => a + b
+// console.log(sum(23)) // если не присвоить значение, то будет NaN, для этого нужны параметры по умолчанию
+
+// const sum = (a, b = 1) => a + b // можно задать, например, b = a * 2
+// console.log(sum(23, 2))
+
+// function sumAll(...all) { // функция может иметь множество значений
+//     console.log(all)
+// }
+
+// sumAll(12, 3, 4, 6, 6, 9) // js создает массив
+
+// function sumAll(...all) {
+//     let result = 0
+//     for (let num of all) {
+//         result = result + num
+//     }
+//     return result
+// }
+
+// const res = sumAll(12, 3, 4, 6, 6, 9)
+// console.log(res)
+
+// Замыкания
+
+function createMember(name) {
+    return function(lastName) {
+        console.log(name + lastName)
+    }
 }
+
+const logWithLastName = createMember('Adelya') 
+console.log(logWithLastName) // возвращает ƒ (lastName) {console.log(name + lastName)}
+console.log(logWithLastName('Ziatdinova')) // так присваеваем значение lastName
+// те параметр createMember становится приватным, функция никак не может оперировать с этим параметром
