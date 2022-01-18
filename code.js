@@ -1,86 +1,33 @@
-// Function
-// 1. Function Declaration. Можно обратиться к функции и до, и после ее создания
-// function greet(name) {
-//     console.log('Hello, ' + name)
-// }
+//* Массивы
 
-// 2. Function Expression (функция в переменноЙ) Нельзя обратиться к функции до ее создания
-// const greet2 = function greet2(name) {
-//     console.log('Hello, 2 ' + name)
-// }
+// const cars = ['Мазда', 'БМВ', 'Порше']
+// const num = [23, 45, 2, 58] // в массив можно класть разные значения: булеан, стринг, намбер и тд
 
-// greet2('Adelya')
-// greet('Adelya')
+//* Function
+// function sega() {}
 
-// console.log(typeof greet) // function
-// console.dir(greet) // тип данных функций - объект
+// Method если функция вызывается в контексте объекта-то это метод
+// cars.push('Калина') // добавляем значение в конец
+// cars.unshift('Волга') // добавляем значение в начало
+// cars.shift() // удаляет и возвращает первое значение
 
-// 3. Анонимные функции (функции без названия)
-// let counter = 0
+// const firstCar = cars.shift() // можем оберунть в переменную и поработать над ней
+// const lastCar = cars.pop() // уждаление последнего элемента массива
 
-// const interval = setInterval(function() { // setInterval
-//     if (counter === 5) {
-//         clearInterval(interval)
-//     } else {
-//         console.log(++counter)}
-// }, 1000)
+// console.log(firstCar)
+// console.log(lastCar)
+// console.log(cars) 
 
+// console.log(cars.reverse()) // переворачивает массив
+// console.log(cars)
 
-// 4. Стрелочная функция
+//* Задача 1
+// const text = 'Привет, мы изучаем JavaScript'
+// const reverseText = text.split('').reverse().join('') // split разбивает объект String на массив строк путём разделения строки указанной подстрокой // join объединяет все элементы массива в строку
+// console.log(reverseText)
 
-// function greet(name) {
-//     console.log('Hello, ' + name)
-//  }
-
-// const arrow = (name) => {
-//     console.log('Hello, ' + name)
-// } 
-// arrow('Adelya')
-
-// const arrow2 = name => console.log('Hello, ' + name) // сокращение. если параметр один, то можно не заключать в скобки, если больше - то необходимо
-// arrow2('Adelya')
-
-// const pow2 = num => num ** 2 // возведение в степень
-// console.log (pow2(23))
-
-
-// 5. Параметры по умолчанию
-
-// const sum = (a, b) => a + b
-// console.log(sum(23, 3))
-
-// const sum = (a, b) => a + b
-// console.log(sum(23)) // если не присвоить значение, то будет NaN, для этого нужны параметры по умолчанию
-
-// const sum = (a, b = 1) => a + b // можно задать, например, b = a * 2
-// console.log(sum(23, 2))
-
-// function sumAll(...all) { // функция может иметь множество значений
-//     console.log(all)
-// }
-
-// sumAll(12, 3, 4, 6, 6, 9) // js создает массив
-
-// function sumAll(...all) {
-//     let result = 0
-//     for (let num of all) {
-//         result = result + num
-//     }
-//     return result
-// }
-
-// const res = sumAll(12, 3, 4, 6, 6, 9)
-// console.log(res)
-
-// Замыкания
-
-function createMember(name) {
-    return function(lastName) {
-        console.log(name + lastName)
-    }
-}
-
-const logWithLastName = createMember('Adelya') 
-console.log(logWithLastName) // возвращает ƒ (lastName) {console.log(name + lastName)}
-console.log(logWithLastName('Ziatdinova')) // так присваеваем значение lastName
-// те параметр createMember становится приватным, функция никак не может оперировать с этим параметром
+const cars = ['Мазда', 'БМВ', 'Порше']
+const index = cars.indexOf('БМВ') // выдает индекс элемента, который ищем
+console.log(cars[index]) // через квадратные скобки обращаемся в индексу того элемента, который хотим получить
+cars[index] = 'Lada' // меняем значение этого индекса
+console.log(cars[index])
