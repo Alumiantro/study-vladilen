@@ -26,7 +26,7 @@
 // }, 1000)
 
 
-// 4. Стрелочная функция
+//* 4. Стрелочная функция
 
 // function greet(name) {
 //     console.log('Hello, ' + name)
